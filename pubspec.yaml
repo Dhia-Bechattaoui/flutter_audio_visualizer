@@ -1,0 +1,61 @@
+name: flutter_audio_visualizer
+description: Real-time audio visualization with customizable waveforms and spectrums
+version: 0.0.1
+homepage: https://github.com/Dhia-Bechattaoui/flutter_audio_visualizer
+repository: https://github.com/Dhia-Bechattaoui/flutter_audio_visualizer
+issue_tracker: https://github.com/Dhia-Bechattaoui/flutter_audio_visualizer/issues
+documentation: https://github.com/Dhia-Bechattaoui/flutter_audio_visualizer#readme
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.16.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Audio processing
+  just_audio: ^0.10.0
+  audio_session: ^0.2.0
+  
+  # UI and visualization
+  flutter_svg: ^2.0.0
+  lottie: ^3.0.0
+  
+  # State management
+  provider: ^6.0.0
+  
+  # Utilities
+  collection: ^1.0.0
+  meta: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  
+  # Code quality and analysis
+  flutter_lints: ^6.0.0
+  
+  # Testing
+  mockito: ^5.0.0
+  build_runner: ^2.0.0
+  
+  # Documentation
+  dartdoc: ^8.0.0
+  
+  # Coverage
+  coverage: ^1.0.0
+
+flutter:
+  # Material Design icons
+  uses-material-design: true
+  
+  # Custom fonts (if needed)
+  # fonts:
+  #   - family: CustomFont
+  #     fonts:
+  #       - asset: fonts/CustomFont-Regular.ttf
+  #       - asset: fonts/CustomFont-Bold.ttf
+  #         weight: 700
+
+

@@ -1,0 +1,27 @@
+name: flutter_audio_visualizer_example
+description: Example app for the flutter_audio_visualizer package.
+publish_to: 'none'
+
+version: 0.0.1+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.16.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  flutter_audio_visualizer:
+    path: ../
+
+  cupertino_icons: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
