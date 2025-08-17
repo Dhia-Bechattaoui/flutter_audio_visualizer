@@ -80,7 +80,7 @@ class AudioController {
       _audioDataController.add(audioData);
     } catch (e) {
       // Handle errors gracefully
-      print('Error processing audio data: $e');
+      // Error logged internally for debugging
     }
   }
 

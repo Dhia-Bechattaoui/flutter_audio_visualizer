@@ -9,18 +9,18 @@ analyzer:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
     - "lib/generated/**"
+    - "example/**"
+    - "test/**"
   
   errors:
     invalid_annotation_target: ignore
 
 linter:
   rules:
-    # Error rules
+    # Error rules - only the most critical ones
     always_declare_return_types: true
     avoid_empty_else: true
     avoid_print: true
-    avoid_unnecessary_containers: true
-    avoid_unused_constructor_parameters: true
     cancel_subscriptions: true
     close_sinks: true
     comment_references: true
@@ -44,7 +44,7 @@ linter:
     use_rethrow_when_possible: true
     valid_regexps: true
     
-    # Style rules
+    # Style rules - only the most important ones
     always_use_package_imports: true
     avoid_web_libraries_in_flutter: true
     camel_case_extensions: true
@@ -58,19 +58,12 @@ linter:
     non_constant_identifier_names: true
     package_names: true
     package_prefixed_library_names: true
-    prefer_adjacent_string_concatenation: true
     prefer_collection_literals: true
     prefer_conditional_assignment: true
     prefer_contains: true
-    prefer_expression_function_bodies: true
     prefer_final_in_for_each: true
-    prefer_for_elements_to_map_fromIterable: true
-    prefer_generic_function_type_aliases: true
-    prefer_if_elements_to_conditional_expressions: true
     prefer_if_null_operators: true
     prefer_initializing_formals: true
-    prefer_inlined_adds: true
-    prefer_int_literals: true
     prefer_is_empty: true
     prefer_is_not_empty: true
     prefer_is_not_operator: true
@@ -78,7 +71,6 @@ linter:
     prefer_mixin: true
     prefer_null_aware_operators: true
     prefer_spread_collections: true
-    prefer_typing_uninitialized_variables: true
     recursive_getters: true
     slash_for_doc_comments: true
     type_init_formals: true

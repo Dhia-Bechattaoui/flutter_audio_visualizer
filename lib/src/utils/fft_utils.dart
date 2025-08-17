@@ -133,7 +133,7 @@ class FFTUtils {
     final List<Complex> oddFFT = _fft(odd);
 
     // Combine results
-    final List<Complex> result = List.filled(n, Complex.zero());
+    final List<Complex> result = List.filled(n, const Complex.zero());
     for (int k = 0; k < n ~/ 2; k++) {
       final double angle = -2 * math.pi * k / n;
       final Complex twiddle = Complex(math.cos(angle), math.sin(angle));

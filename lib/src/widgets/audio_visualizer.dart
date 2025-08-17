@@ -55,9 +55,7 @@ class _AudioVisualizerState extends State<AudioVisualizer> {
   void initState() {
     super.initState();
 
-    _audioController = AudioController(
-      audioSource: widget.audioSource,
-    );
+    _audioController = AudioController(audioSource: widget.audioSource);
 
     _visualizationController = VisualizationController(
       visualizationType: widget.visualizationType,
@@ -133,16 +131,10 @@ class _AudioVisualizerState extends State<AudioVisualizer> {
 
           switch (data.type) {
             case VisualizationType.waveform:
-              return WaveformVisualizer(
-                data: data,
-                style: widget.style,
-              );
+              return WaveformVisualizer(data: data, style: widget.style);
 
             case VisualizationType.spectrum:
-              return SpectrumVisualizer(
-                data: data,
-                style: widget.style,
-              );
+              return SpectrumVisualizer(data: data, style: widget.style);
 
             case VisualizationType.combined:
               return _buildCombinedVisualization(data);
@@ -158,10 +150,7 @@ class _AudioVisualizerState extends State<AudioVisualizer> {
       children: [
         // Waveform visualization (top half)
         Expanded(
-          child: WaveformVisualizer(
-            data: data,
-            style: widget.style,
-          ),
+          child: WaveformVisualizer(data: data, style: widget.style),
         ),
 
         // Divider
@@ -175,7 +164,7 @@ class _AudioVisualizerState extends State<AudioVisualizer> {
           Expanded(
             child: SpectrumVisualizer(
               data: data.copyWith(
-                bars: data.spectrumBars!,
+                bars: data.spectrumBars,
                 type: VisualizationType.spectrum,
               ),
               style: widget.style,
@@ -191,26 +180,16 @@ class _AudioVisualizerState extends State<AudioVisualizer> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.error_outline,
-            color: Colors.red,
-            size: 48,
-          ),
+          const Icon(Icons.error_outline, color: Colors.red, size: 48),
           const SizedBox(height: 8),
-          Text(
+          const Text(
             'Visualization Error',
-            style: TextStyle(
-              color: Colors.red,
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 4),
           Text(
             error,
-            style: TextStyle(
-              color: Colors.red[700],
-              fontSize: 12,
-            ),
+            style: TextStyle(color: Colors.red[700], fontSize: 12),
             textAlign: TextAlign.center,
           ),
         ],
@@ -225,16 +204,14 @@ class _AudioVisualizerState extends State<AudioVisualizer> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CircularProgressIndicator(
-            valueColor:
-                AlwaysStoppedAnimation<Color>(widget.style.waveformColor),
+            valueColor: AlwaysStoppedAnimation<Color>(
+              widget.style.waveformColor,
+            ),
           ),
           const SizedBox(height: 8),
           Text(
             'Initializing...',
-            style: TextStyle(
-              color: widget.style.waveformColor,
-              fontSize: 14,
-            ),
+            style: TextStyle(color: widget.style.waveformColor, fontSize: 14),
           ),
         ],
       ),

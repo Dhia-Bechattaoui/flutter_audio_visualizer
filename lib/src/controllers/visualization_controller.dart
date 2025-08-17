@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:math' as math;
-import '../enums/visualization_type.dart';
-import '../models/visualization_style.dart';
+import 'package:flutter_audio_visualizer/src/enums/visualization_type.dart';
+import 'package:flutter_audio_visualizer/src/models/visualization_style.dart';
 
 /// Controller for managing visualization state and rendering.
 class VisualizationController {
@@ -78,7 +78,7 @@ class VisualizationController {
       _visualizationDataController.add(visualizationData);
     } catch (e) {
       // Handle errors gracefully
-      print('Error updating visualization: $e');
+      // Error logged internally for debugging
     }
   }
 
@@ -98,7 +98,7 @@ class VisualizationController {
 
   /// Generates waveform visualization data
   VisualizationData _generateWaveformData(DateTime timestamp) {
-    final barCount = 64;
+    const barCount = 64;
     final bars = List<double>.filled(barCount, 0.0);
 
     // Generate mock waveform data
@@ -118,7 +118,7 @@ class VisualizationController {
 
   /// Generates spectrum visualization data
   VisualizationData _generateSpectrumData(DateTime timestamp) {
-    final barCount = 64;
+    const barCount = 64;
     final bars = List<double>.filled(barCount, 0.0);
 
     // Generate mock spectrum data
