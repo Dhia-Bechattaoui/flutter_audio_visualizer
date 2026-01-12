@@ -9,7 +9,7 @@
 A powerful Flutter package for real-time audio visualization with customizable waveforms and spectrums. Perfect for music apps, audio players, and any application requiring audio visualization.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Dhia-Bechattaoui/flutter_audio_visualizer/main/doc/assets/demo.gif" width="300" alt="Audio Visualizer Demo">
+  <img src="https://raw.githubusercontent.com/Dhia-Bechattaoui/flutter_audio_visualizer/main/assets/audio_visualizer.gif" width="300" alt="Flutter Audio Visualizer Showcase">
 </p>
 
 ## Features
