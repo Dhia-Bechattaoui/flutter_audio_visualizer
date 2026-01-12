@@ -1,17 +1,17 @@
-/// Defines the source type for audio data.
+/// Defines the origin of the audio signal used for visualization.
 enum AudioSourceType {
-  /// Audio from microphone input
+  /// Audio captured from the device's microphone input.
   microphone,
 
-  /// Audio from an audio player
+  /// Audio captured from an in-app audio player session.
   audioPlayer,
 
-  /// Audio from a custom source
+  /// Audio provided by a custom, developer-defined source.
   custom,
 
-  /// Audio from file
+  /// Audio loaded and processed from a local file.
   file,
 
-  /// Audio from network stream
+  /// Audio streamed and processed from a network URL.
   network,
 }

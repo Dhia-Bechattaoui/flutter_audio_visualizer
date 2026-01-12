@@ -7,10 +7,10 @@ class AudioConstants {
   static const int defaultBufferSize = 1024;
 
   /// Minimum frequency for audio visualization (20 Hz)
-  static const double minFrequency = 20.0;
+  static const double minFrequency = 20;
 
   /// Maximum frequency for audio visualization (20 kHz)
-  static const double maxFrequency = 20000.0;
+  static const double maxFrequency = 20000;
 
   /// Default FFT size for spectrum analysis
   static const int defaultFftSize = 512;
@@ -19,7 +19,7 @@ class AudioConstants {
   static const double minAmplitudeThreshold = 0.01;
 
   /// Maximum amplitude for normalization
-  static const double maxAmplitude = 1.0;
+  static const double maxAmplitude = 1;
 
   /// Default update rate for visualization (60 FPS)
   static const int defaultUpdateRate = 60;

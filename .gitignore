@@ -16,14 +16,21 @@ migrate_working_dir/
 *.iws
 .idea/
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
+# The .vscode folder contains launch configuration and tasks you have configured
+# for your project. These should be committed to source control to allow
+# others to run your tests and debug the project.
+# .vscode/
 
 # Flutter/Dart/Pub related
 **/doc/api/
 **/ios/Flutter/.last_build_id
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/GeneratedConfig.xcconfig
+**/ios/Flutter/flutter_export_environment.sh
+**/linux/flutter/
+**/macos/Flutter/ephemeral/
+**/windows/flutter/
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
@@ -32,74 +39,19 @@ migrate_working_dir/
 .pub/
 /build/
 
-# Symbolication related
-app.*.symbols
+# Symbol propagation service temporary files
+/directory_lock
 
-# Obfuscation related
-app.*.map.json
+# Android related
+**/android/**/generated/
+**/android/gradle/
+**/android/local.properties
+**/android/project.properties
+**/android/src/main/res/drawable-*/
+**/android/src/main/res/raw/
 
-# Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
-
-# iOS related
-**/ios/**/*.mode1v3
-**/ios/**/*.mode2v3
-**/ios/**/*.moved-aside
-**/ios/**/*.pbxuser
-**/ios/**/*.perspectivev3
-**/ios/**/*sync/
-**/ios/**/.sconsign.dblite
-**/ios/**/.tags*
-**/ios/**/.vagrant/
-**/ios/**/DerivedData/
-**/ios/**/Icon?
-**/ios/**/Pods/
-**/ios/**/.symlinks/
-**/ios/**/profile
-**/ios/**/xcuserdata
-**/ios/.generated/
-**/ios/Flutter/App.framework
-**/ios/Flutter/Flutter.framework
-**/ios/Flutter/Flutter.podspec
-**/ios/Flutter/Generated.xcconfig
-**/ios/Flutter/app.flx
-**/ios/Flutter/app.zip
-**/ios/Flutter/flutter_assets/
-**/ios/Flutter/flutter_export_environment.sh
-**/ios/ServiceDefinitions.json
-**/ios/Runner/GeneratedPluginRegistrant.*
-
-# macOS
-**/macos/Flutter/GeneratedPluginRegistrant.swift
+# Web related
+lib/generated_plugin_registrant.dart
 
 # Coverage
 coverage/
-
-# Exceptions to above rules.
-!**/ios/**/default.mode1v3
-!**/ios/**/default.mode2v3
-!**/ios/**/default.pbxuser
-!**/ios/**/default.perspectivev3
-!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
-
-# FVM
-.fvm/
-
-# Environment files
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Generated files
-*.g.dart
-*.freezed.dart
-
-# Audio files (for testing)
-*.wav
-*.mp3
-*.aac
-*.m4a

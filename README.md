@@ -1,18 +1,24 @@
 # Flutter Audio Visualizer
 
 [![Pub Version](https://img.shields.io/pub/v/flutter_audio_visualizer)](https://pub.dev/packages/flutter_audio_visualizer)
-[![Flutter Version](https://img.shields.io/badge/flutter-3.16+-blue.svg)](https://flutter.dev/)
-[![Dart Version](https://img.shields.io/badge/dart-3.0+-blue.svg)](https://dart.dev/)
+[![Flutter Version](https://img.shields.io/badge/flutter-3.32+-blue.svg)](https://flutter.dev/)
+[![Dart Version](https://img.shields.io/badge/dart-3.8+-blue.svg)](https://dart.dev/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Platform Support](https://img.shields.io/badge/platforms-Android%20%7C%20iOS%20%7C%20Web%20%7C%20Windows%20%7C%20macOS%20%7C%20Linux-blue.svg)](https://flutter.dev/multi-platform)
+[![Platform Support](https://img.shields.io/badge/platforms-Android%20%7C%20iOS%20%7C%20Web%20%7C%20WASM%20%7C%20Windows%20%7C%20macOS%20%7C%20Linux-blue.svg)](https://flutter.dev/multi-platform)
 
 A powerful Flutter package for real-time audio visualization with customizable waveforms and spectrums. Perfect for music apps, audio players, and any application requiring audio visualization.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Dhia-Bechattaoui/flutter_audio_visualizer/main/doc/assets/demo.gif" width="300" alt="Audio Visualizer Demo">
+</p>
 
 ## Features
 
 🎵 **Real-time Audio Visualization**
 - Live waveform display
 - Spectrum analyzer with FFT
+- **Adaptive Noise Gate** for clean silence
+- **Auto Gain Control (AGC)** for consistent levels
 - Customizable visualization styles
 - High-performance rendering
 
@@ -32,6 +38,7 @@ A powerful Flutter package for real-time audio visualization with customizable w
 - Android (API 21+)
 - iOS (12.0+)
 - Web
+- **WASM compatible**
 - Windows
 - macOS
 - Linux
@@ -42,7 +49,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flutter_audio_visualizer: ^0.0.1
+  flutter_audio_visualizer: ^0.1.0
 ```
 
 Then run:

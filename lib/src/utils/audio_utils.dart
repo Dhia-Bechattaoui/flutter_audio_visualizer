@@ -1,45 +1,57 @@
 import 'dart:math' as math;
-import 'package:flutter_audio_visualizer/src/constants/audio_constants.dart';
-import 'package:flutter_audio_visualizer/src/models/audio_data.dart';
+import '../constants/audio_constants.dart';
+import '../models/audio_data.dart';
 
-/// Utility functions for audio processing and analysis.
+/// Utility class for various audio processing, normalization, and analysis
+/// tasks.
 class AudioUtils {
-  /// Normalizes audio amplitude to a 0.0-1.0 range.
-  static double normalizeAmplitude(double amplitude) {
-    return (amplitude - AudioConstants.minAmplitudeThreshold) /
-        (AudioConstants.maxAmplitude - AudioConstants.minAmplitudeThreshold);
-  }
+  // Prevent instantiation
+  const AudioUtils._();
 
-  /// Applies smoothing to audio data to reduce jitter.
+  /// Normalizes a raw audio [amplitude] to a standard 0.0 to 1.0 range.
+  static double normalizeAmplitude(final double amplitude) =>
+      (amplitude - AudioConstants.minAmplitudeThreshold) /
+      (AudioConstants.maxAmplitude - AudioConstants.minAmplitudeThreshold);
+
+  /// Applies exponential smoothing to [currentValue] based on a
+  /// [previousValue].
+  ///
+  /// The [factor] determines the blend ratio (e.g., 0.8 favors new data).
   static double smoothValue(
-      double currentValue, double previousValue, double factor) {
-    return (currentValue * factor) + (previousValue * (1.0 - factor));
-  }
+    final double currentValue,
+    final double previousValue,
+    final double factor,
+  ) => (currentValue * factor) + (previousValue * (1.0 - factor));
 
   /// Converts frequency to a logarithmic scale for better visualization.
-  static double frequencyToLogScale(double frequency) {
-    if (frequency <= 0) return 0.0;
+  static double frequencyToLogScale(final double frequency) {
+    if (frequency <= 0) {
+      return 0;
+    }
     return (math.log(frequency) - math.log(AudioConstants.minFrequency)) /
         (math.log(AudioConstants.maxFrequency) -
             math.log(AudioConstants.minFrequency));
   }
 
   /// Converts linear amplitude to decibels.
-  static double amplitudeToDecibels(double amplitude) {
-    if (amplitude <= 0) return -60.0;
+  static double amplitudeToDecibels(final double amplitude) {
+    if (amplitude <= 0) {
+      return -60;
+    }
     return 20.0 * math.log(amplitude) / math.ln10;
   }
 
   /// Converts decibels to linear amplitude.
-  static double decibelsToAmplitude(double decibels) {
-    return math.pow(10.0, decibels / 20.0).toDouble();
-  }
+  static double decibelsToAmplitude(final double decibels) =>
+      math.pow(10.0, decibels / 20.0).toDouble();
 
   /// Calculates the RMS (Root Mean Square) of audio samples.
-  static double calculateRMS(List<double> samples) {
-    if (samples.isEmpty) return 0.0;
+  static double calculateRMS(final List<double> samples) {
+    if (samples.isEmpty) {
+      return 0;
+    }
 
-    double sum = 0.0;
+    var sum = 0.0;
     for (final sample in samples) {
       sum += sample * sample;
     }
@@ -48,23 +60,27 @@ class AudioUtils {
 
   /// Applies a low-pass filter to reduce high-frequency noise.
   static double lowPassFilter(
-      double input, double previousOutput, double alpha) {
-    return alpha * input + (1.0 - alpha) * previousOutput;
-  }
+    final double input,
+    final double previousOutput,
+    final double alpha,
+  ) => alpha * input + (1.0 - alpha) * previousOutput;
 
   /// Detects if audio is above a certain threshold.
-  static bool isAudioActive(AudioData audioData, double threshold) {
-    return audioData.amplitude > threshold;
-  }
+  static bool isAudioActive(
+    final AudioData audioData,
+    final double threshold,
+  ) => audioData.amplitude > threshold;
 
   /// Calculates the average frequency from spectrum data.
-  static double calculateAverageFrequency(List<double> spectrum) {
-    if (spectrum.isEmpty) return 0.0;
+  static double calculateAverageFrequency(final List<double> spectrum) {
+    if (spectrum.isEmpty) {
+      return 0;
+    }
 
-    double weightedSum = 0.0;
-    double totalWeight = 0.0;
+    var weightedSum = 0.0;
+    var totalWeight = 0.0;
 
-    for (int i = 0; i < spectrum.length; i++) {
+    for (var i = 0; i < spectrum.length; i++) {
       final frequency = i * AudioConstants.defaultSampleRate / spectrum.length;
       final weight = spectrum[i];
       weightedSum += frequency * weight;

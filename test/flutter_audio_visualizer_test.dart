@@ -1,26 +1,23 @@
 import 'package:flutter_audio_visualizer/flutter_audio_visualizer.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('Basic enum tests', () {
     // Test visualization types
     expect(VisualizationType.values.length, 3);
-    expect(isA<VisualizationType>(VisualizationType.waveform), true);
-    expect(isA<VisualizationType>(VisualizationType.spectrum), true);
-    expect(isA<VisualizationType>(VisualizationType.combined), true);
+    expect(VisualizationType.waveform, isA<VisualizationType>());
+    expect(VisualizationType.spectrum, isA<VisualizationType>());
+    expect(VisualizationType.combined, isA<VisualizationType>());
 
     // Test audio source types
     expect(AudioSourceType.values.length, 5);
-    expect(isA<AudioSourceType>(AudioSourceType.microphone), true);
-    expect(isA<AudioSourceType>(AudioSourceType.audioPlayer), true);
+    expect(AudioSourceType.microphone, isA<AudioSourceType>());
+    expect(AudioSourceType.audioPlayer, isA<AudioSourceType>());
   });
 
   test('AudioData creation', () {
     final now = DateTime.now();
-    final audioData = AudioData(
-      amplitude: 0.5,
-      frequency: 440.0,
-      timestamp: now,
-    );
+    final audioData = AudioData(amplitude: 0.5, frequency: 440, timestamp: now);
 
     expect(audioData.amplitude, 0.5);
     expect(audioData.frequency, 440.0);
@@ -30,7 +27,7 @@ void main() {
   test('AudioData copyWith', () {
     final original = AudioData(
       amplitude: 0.5,
-      frequency: 440.0,
+      frequency: 440,
       timestamp: DateTime.now(),
     );
 
@@ -40,10 +37,7 @@ void main() {
   });
 
   test('AudioVisualizerStyle creation', () {
-    const style = AudioVisualizerStyle(
-      barWidth: 3.0,
-      barSpacing: 1.0,
-    );
+    const style = AudioVisualizerStyle();
 
     expect(style.barWidth, 3.0);
     expect(style.barSpacing, 1.0);
@@ -51,14 +45,14 @@ void main() {
 
   test('AudioVisualizerStyle copyWith', () {
     const original = AudioVisualizerStyle();
-    final modified = original.copyWith(barWidth: 5.0);
+    final modified = original.copyWith(barWidth: 5);
 
     expect(modified.barWidth, 5.0);
     expect(modified.waveformColor, original.waveformColor);
   });
 
   test('AudioSource properties', () {
-    const microphoneSource = MicrophoneAudioSource();
+    final microphoneSource = MicrophoneAudioSource();
     const playerSource = AudioPlayerSource();
 
     expect(microphoneSource.type, AudioSourceType.microphone);
@@ -74,21 +68,21 @@ void main() {
 
   test('AudioUtils functions', () {
     final normalized = AudioUtils.normalizeAmplitude(0.5);
-    expect(isA<double>(normalized), true);
+    expect(normalized, isA<double>());
     expect(normalized >= 0.0, true);
     expect(normalized <= 1.0, true);
 
-    final smoothed = AudioUtils.smoothValue(0.8, 0.2, 0.5);
-    expect(smoothed, 0.5);
+    final smoothedCorrect = AudioUtils.smoothValue(0.8, 0.2, 0.5);
+    expect(smoothedCorrect, 0.5);
   });
 
   test('FFTUtils functions', () {
     final frequency = FFTUtils.binToFrequency(10, 44100, 1024);
-    expect(isA<double>(frequency), true);
+    expect(frequency, isA<double>());
     expect(frequency > 0, true);
 
-    final bin = FFTUtils.frequencyToBin(440.0, 44100, 1024);
-    expect(isA<int>(bin), true);
+    final bin = FFTUtils.frequencyToBin(440, 44100, 1024);
+    expect(bin, isA<int>());
     expect(bin >= 0, true);
   });
 
@@ -96,31 +90,9 @@ void main() {
     final audioController = AudioController();
     final visualizationController = VisualizationController();
 
-    expect(isA<AudioController>(audioController), true);
-    expect(isA<VisualizationController>(visualizationController), true);
+    expect(audioController, isA<AudioController>());
+    expect(visualizationController, isA<VisualizationController>());
     expect(audioController.isActive, false);
     expect(visualizationController.isActive, false);
   });
-}
-
-// Simple test framework
-void test(String description, Function testFunction) {
-  print('Running test: $description');
-  try {
-    testFunction();
-    print('✓ Test passed: $description');
-  } catch (e) {
-    print('✗ Test failed: $description - $e');
-  }
-}
-
-void expect(dynamic actual, dynamic matcher) {
-  if (actual == matcher) {
-    return;
-  }
-  throw Exception('Expected $matcher but got $actual');
-}
-
-bool isA<T>(dynamic obj) {
-  return obj is T;
 }

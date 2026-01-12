@@ -1,11 +1,11 @@
-/// Defines the type of audio visualization to display.
+/// Defines the visual representation used for the audio data.
 enum VisualizationType {
-  /// Displays a real-time waveform visualization
+  /// Renders a real-time amplitude waveform (time domain).
   waveform,
 
-  /// Displays a frequency spectrum visualization
+  /// Renders a frequency spectrum analyzer using FFT (frequency domain).
   spectrum,
 
-  /// Displays both waveform and spectrum visualizations
+  /// Renders both waveform and spectrum visualizations simultaneously.
   combined,
 }
