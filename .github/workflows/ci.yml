@@ -10,18 +10,39 @@ jobs:
   pana:
     name: Pana Score Analysis
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write # Required for authentication using OIDC
+      contents: write # Required to push auto-formatted code
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN || github.token }}
       
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.44.0'
+          flutter-version: '3.32.0'
           channel: 'stable'
           cache: true
       
       - name: Install pana
         run: dart pub global activate pana
+      
+      - name: Auto-format code
+        run: |
+          dart format .
+          if [[ -n $(git status --porcelain) ]]; then
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add .
+            git commit -m "style: auto-format with dart format"
+            if [[ "${{ github.event_name }}" == "push" ]]; then
+              git push origin HEAD:${GITHUB_REF#refs/heads/}
+            else
+              echo "Code is not formatted. Please run 'dart format .' locally."
+              exit 1
+            fi
+          fi
       
       - name: Run pana and check score
         run: |
@@ -34,3 +55,16 @@ jobs:
             exit 1
           fi
 
+      - name: Create and push version tag
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          VERSION=$(grep '^version: ' pubspec.yaml | awk '{print $2}')
+          TAG="v$VERSION"
+          # Check if tag already exists
+          if git ls-remote --tags origin | grep -q "refs/tags/$TAG"; then
+            echo "Tag $TAG already exists on remote, skipping tag creation."
+          else
+            echo "Creating and pushing new tag: $TAG"
+            git tag "$TAG"
+            git push origin "$TAG"
+          fi

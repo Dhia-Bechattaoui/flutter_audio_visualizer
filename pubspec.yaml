@@ -1,6 +1,6 @@
 name: flutter_audio_visualizer
 description: Real-time audio visualization with customizable waveforms and spectrums
-version: 0.1.3
+version: 0.1.4
 homepage: https://www.bechattaoui.dev
 repository: https://github.com/Dhia-Bechattaoui/flutter_audio_visualizer
 issue_tracker: https://github.com/Dhia-Bechattaoui/flutter_audio_visualizer/issues
@@ -29,7 +29,7 @@ dependencies:
   just_audio: ^0.10.0
   lottie: ^3.0.0
   meta: ^1.0.0
-  permission_handler: ^12.0.1
+  permission_handler: ^13.0.0
   provider: ^6.0.0
   record: ^7.0.0
 

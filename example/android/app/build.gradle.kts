@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.bechattaoui.flutter_audio_visualizer_example"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 37
     ndkVersion = flutter.ndkVersion
 
     compileOptions {

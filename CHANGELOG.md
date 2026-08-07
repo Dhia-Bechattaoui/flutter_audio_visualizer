@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.4] - 2026-08-07
+
+### Changed
+- Updated `permission_handler` dependency to `^13.0.0`
+- Updated example Android project `compileSdk` to `37` and Gradle wrapper to `8.14`
+
+
 ## [0.1.3] - 2026-06-02
 
 ### Fixed
@@ -77,5 +84,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Release automation
 - Dependency management
 
+[0.1.4]: https://github.com/Dhia-Bechattaoui/flutter_audio_visualizer/compare/v0.1.3...v0.1.4
+[0.1.3]: https://github.com/Dhia-Bechattaoui/flutter_audio_visualizer/compare/v0.1.2...v0.1.3
+[0.1.2]: https://github.com/Dhia-Bechattaoui/flutter_audio_visualizer/compare/v0.1.0...v0.1.2
 [0.1.0]: https://github.com/Dhia-Bechattaoui/flutter_audio_visualizer/compare/v0.0.1...v0.1.0
 [0.0.1]: https://github.com/Dhia-Bechattaoui/flutter_audio_visualizer/releases/tag/v0.0.1
