@@ -37,13 +37,14 @@ class AudioData {
     final DateTime? timestamp,
     final double? phase,
     final List<double>? spectrum,
-  }) => AudioData(
-    amplitude: amplitude ?? this.amplitude,
-    frequency: frequency ?? this.frequency,
-    timestamp: timestamp ?? this.timestamp,
-    phase: phase ?? this.phase,
-    spectrum: spectrum ?? this.spectrum,
-  );
+  }) =>
+      AudioData(
+        amplitude: amplitude ?? this.amplitude,
+        frequency: frequency ?? this.frequency,
+        timestamp: timestamp ?? this.timestamp,
+        phase: phase ?? this.phase,
+        spectrum: spectrum ?? this.spectrum,
+      );
 
   @override
   bool operator ==(final Object other) {

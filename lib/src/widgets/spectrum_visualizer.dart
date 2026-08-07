@@ -19,9 +19,9 @@ class SpectrumVisualizer extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) => CustomPaint(
-    painter: SpectrumPainter(bars: data.bars, style: style),
-    size: Size.infinite,
-  );
+        painter: SpectrumPainter(bars: data.bars, style: style),
+        size: Size.infinite,
+      );
 }
 
 /// Custom painter for drawing the spectrum visualization.

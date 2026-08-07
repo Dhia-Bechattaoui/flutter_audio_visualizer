@@ -58,17 +58,18 @@ class AudioVisualizerStyle {
     final Gradient? gradient,
     final BorderRadius? borderRadius,
     final BoxShadow? shadow,
-  }) => AudioVisualizerStyle(
-    waveformColor: waveformColor ?? this.waveformColor,
-    spectrumColor: spectrumColor ?? this.spectrumColor,
-    backgroundColor: backgroundColor ?? this.backgroundColor,
-    barWidth: barWidth ?? this.barWidth,
-    barSpacing: barSpacing ?? this.barSpacing,
-    animationDuration: animationDuration ?? this.animationDuration,
-    gradient: gradient ?? this.gradient,
-    borderRadius: borderRadius ?? this.borderRadius,
-    shadow: shadow ?? this.shadow,
-  );
+  }) =>
+      AudioVisualizerStyle(
+        waveformColor: waveformColor ?? this.waveformColor,
+        spectrumColor: spectrumColor ?? this.spectrumColor,
+        backgroundColor: backgroundColor ?? this.backgroundColor,
+        barWidth: barWidth ?? this.barWidth,
+        barSpacing: barSpacing ?? this.barSpacing,
+        animationDuration: animationDuration ?? this.animationDuration,
+        gradient: gradient ?? this.gradient,
+        borderRadius: borderRadius ?? this.borderRadius,
+        shadow: shadow ?? this.shadow,
+      );
 
   @override
   bool operator ==(final Object other) {
@@ -89,14 +90,14 @@ class AudioVisualizerStyle {
 
   @override
   int get hashCode => Object.hash(
-    waveformColor,
-    spectrumColor,
-    backgroundColor,
-    barWidth,
-    barSpacing,
-    animationDuration,
-    gradient,
-    borderRadius,
-    shadow,
-  );
+        waveformColor,
+        spectrumColor,
+        backgroundColor,
+        barWidth,
+        barSpacing,
+        animationDuration,
+        gradient,
+        borderRadius,
+        shadow,
+      );
 }

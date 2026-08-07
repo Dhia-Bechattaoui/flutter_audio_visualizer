@@ -21,7 +21,8 @@ class AudioUtils {
     final double currentValue,
     final double previousValue,
     final double factor,
-  ) => (currentValue * factor) + (previousValue * (1.0 - factor));
+  ) =>
+      (currentValue * factor) + (previousValue * (1.0 - factor));
 
   /// Converts frequency to a logarithmic scale for better visualization.
   static double frequencyToLogScale(final double frequency) {
@@ -63,13 +64,15 @@ class AudioUtils {
     final double input,
     final double previousOutput,
     final double alpha,
-  ) => alpha * input + (1.0 - alpha) * previousOutput;
+  ) =>
+      alpha * input + (1.0 - alpha) * previousOutput;
 
   /// Detects if audio is above a certain threshold.
   static bool isAudioActive(
     final AudioData audioData,
     final double threshold,
-  ) => audioData.amplitude > threshold;
+  ) =>
+      audioData.amplitude > threshold;
 
   /// Calculates the average frequency from spectrum data.
   static double calculateAverageFrequency(final List<double> spectrum) {

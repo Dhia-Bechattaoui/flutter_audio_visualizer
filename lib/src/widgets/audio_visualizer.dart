@@ -148,103 +148,105 @@ class _AudioVisualizerState extends State<AudioVisualizer> {
 
   @override
   Widget build(final BuildContext context) => Container(
-    width: widget.width,
-    height: widget.height,
-    decoration: BoxDecoration(
-      color: widget.style.backgroundColor,
-      borderRadius: widget.style.borderRadius,
-      boxShadow: widget.style.shadow != null ? [widget.style.shadow!] : null,
-    ),
-    child: StreamBuilder<VisualizationData>(
-      stream: _visualizationController.visualizationDataStream,
-      builder: (final context, final snapshot) {
-        if (snapshot.hasError) {
-          return _buildErrorWidget(snapshot.error.toString());
-        }
+        width: widget.width,
+        height: widget.height,
+        decoration: BoxDecoration(
+          color: widget.style.backgroundColor,
+          borderRadius: widget.style.borderRadius,
+          boxShadow:
+              widget.style.shadow != null ? [widget.style.shadow!] : null,
+        ),
+        child: StreamBuilder<VisualizationData>(
+          stream: _visualizationController.visualizationDataStream,
+          builder: (final context, final snapshot) {
+            if (snapshot.hasError) {
+              return _buildErrorWidget(snapshot.error.toString());
+            }
 
-        if (!snapshot.hasData) {
-          return _buildLoadingWidget();
-        }
+            if (!snapshot.hasData) {
+              return _buildLoadingWidget();
+            }
 
-        final data = snapshot.data!;
+            final data = snapshot.data!;
 
-        switch (data.type) {
-          case VisualizationType.waveform:
-            return WaveformVisualizer(data: data, style: widget.style);
+            switch (data.type) {
+              case VisualizationType.waveform:
+                return WaveformVisualizer(data: data, style: widget.style);
 
-          case VisualizationType.spectrum:
-            return SpectrumVisualizer(data: data, style: widget.style);
+              case VisualizationType.spectrum:
+                return SpectrumVisualizer(data: data, style: widget.style);
 
-          case VisualizationType.combined:
-            return _buildCombinedVisualization(data);
-        }
-      },
-    ),
-  );
+              case VisualizationType.combined:
+                return _buildCombinedVisualization(data);
+            }
+          },
+        ),
+      );
 
   /// Builds the combined visualization (waveform + spectrum)
   Widget _buildCombinedVisualization(final VisualizationData data) => Column(
-    children: [
-      // Waveform visualization (top half)
-      Expanded(
-        child: WaveformVisualizer(data: data, style: widget.style),
-      ),
-
-      // Divider
-      Container(
-        height: 1,
-        color: widget.style.waveformColor.withValues(alpha: 0.3),
-      ),
-
-      // Spectrum visualization (bottom half)
-      if (data.spectrumBars != null)
-        Expanded(
-          child: SpectrumVisualizer(
-            data: data.copyWith(
-              bars: data.spectrumBars,
-              type: VisualizationType.spectrum,
-            ),
-            style: widget.style,
+        children: [
+          // Waveform visualization (top half)
+          Expanded(
+            child: WaveformVisualizer(data: data, style: widget.style),
           ),
-        ),
-    ],
-  );
+
+          // Divider
+          Container(
+            height: 1,
+            color: widget.style.waveformColor.withValues(alpha: 0.3),
+          ),
+
+          // Spectrum visualization (bottom half)
+          if (data.spectrumBars != null)
+            Expanded(
+              child: SpectrumVisualizer(
+                data: data.copyWith(
+                  bars: data.spectrumBars,
+                  type: VisualizationType.spectrum,
+                ),
+                style: widget.style,
+              ),
+            ),
+        ],
+      );
 
   /// Builds the error widget
   Widget _buildErrorWidget(final String error) => Center(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Icon(Icons.error_outline, color: Colors.red, size: 48),
-        const SizedBox(height: 8),
-        const Text(
-          'Visualization Error',
-          style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.error_outline, color: Colors.red, size: 48),
+            const SizedBox(height: 8),
+            const Text(
+              'Visualization Error',
+              style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              error,
+              style: TextStyle(color: Colors.red[700], fontSize: 12),
+              textAlign: TextAlign.center,
+            ),
+          ],
         ),
-        const SizedBox(height: 4),
-        Text(
-          error,
-          style: TextStyle(color: Colors.red[700], fontSize: 12),
-          textAlign: TextAlign.center,
-        ),
-      ],
-    ),
-  );
+      );
 
   /// Builds the loading widget
   Widget _buildLoadingWidget() => Center(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(widget.style.waveformColor),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircularProgressIndicator(
+              valueColor:
+                  AlwaysStoppedAnimation<Color>(widget.style.waveformColor),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Initializing...',
+              style: TextStyle(color: widget.style.waveformColor, fontSize: 14),
+            ),
+          ],
         ),
-        const SizedBox(height: 8),
-        Text(
-          'Initializing...',
-          style: TextStyle(color: widget.style.waveformColor, fontSize: 14),
-        ),
-      ],
-    ),
-  );
+      );
 }

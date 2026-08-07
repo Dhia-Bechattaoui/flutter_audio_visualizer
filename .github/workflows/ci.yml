@@ -24,6 +24,9 @@ jobs:
           channel: 'stable'
           cache: true
       
+      - name: Install dependencies
+        run: flutter pub get
+
       - name: Install pana
         run: dart pub global activate pana
       

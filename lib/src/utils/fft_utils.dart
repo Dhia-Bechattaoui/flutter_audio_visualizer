@@ -57,14 +57,16 @@ class FFTUtils {
     final int binIndex,
     final int sampleRate,
     final int fftSize,
-  ) => binIndex * sampleRate / fftSize;
+  ) =>
+      binIndex * sampleRate / fftSize;
 
   /// Converts frequency to bin index.
   static int frequencyToBin(
     final double frequency,
     final int sampleRate,
     final int fftSize,
-  ) => (frequency * fftSize / sampleRate).round();
+  ) =>
+      (frequency * fftSize / sampleRate).round();
 
   /// Finds the peak frequency in the spectrum.
   static double findPeakFrequency(
@@ -125,8 +127,7 @@ class FFTUtils {
     smoothed[0] = spectrum[0];
 
     for (var i = 1; i < spectrum.length; i++) {
-      smoothed[i] =
-          smoothingFactor * spectrum[i] +
+      smoothed[i] = smoothingFactor * spectrum[i] +
           (1 - smoothingFactor) * smoothed[i - 1];
     }
 
@@ -190,7 +191,9 @@ class Complex {
   const Complex(this.real, this.imaginary);
 
   /// Creates a complex number with zero real and imaginary parts.
-  const Complex.zero() : real = 0.0, imaginary = 0.0;
+  const Complex.zero()
+      : real = 0.0,
+        imaginary = 0.0;
 
   /// Real part of the complex number.
   final double real;
@@ -214,9 +217,9 @@ class Complex {
 
   /// Multiplication of complex numbers.
   Complex operator *(final Complex other) => Complex(
-    real * other.real - imaginary * other.imaginary,
-    real * other.imaginary + imaginary * other.real,
-  );
+        real * other.real - imaginary * other.imaginary,
+        real * other.imaginary + imaginary * other.real,
+      );
 
   /// Division of complex numbers.
   Complex operator /(final Complex other) {

@@ -19,7 +19,7 @@ import '../utils/fft_utils.dart';
 class AudioController {
   /// Creates an instance of [AudioController] with an optional [audioSource].
   AudioController({final AudioSource? audioSource})
-    : _audioSource = audioSource;
+      : _audioSource = audioSource;
 
   AudioSource? _audioSource;
   StreamSubscription<List<int>>? _sourceSubscription;
@@ -134,9 +134,8 @@ class AudioController {
     }
 
     // Switched to ByteData for robust endianness handling (Big Endian detected)
-    final bytes = rawSamples is Uint8List
-        ? rawSamples
-        : Uint8List.fromList(rawSamples);
+    final bytes =
+        rawSamples is Uint8List ? rawSamples : Uint8List.fromList(rawSamples);
     final byteData = ByteData.sublistView(bytes);
     final normalizedSamples = <double>[];
 
@@ -201,9 +200,8 @@ class AudioController {
       // Apply Noise Gate (Aggressive)
       if (_peakHistory < noiseThreshold) {
         // Squared factor for steeper cut-off
-        final gateFactor = math
-            .pow(_peakHistory / noiseThreshold, 2)
-            .toDouble();
+        final gateFactor =
+            math.pow(_peakHistory / noiseThreshold, 2).toDouble();
         gain *= gateFactor;
       }
 

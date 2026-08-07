@@ -19,9 +19,9 @@ class WaveformVisualizer extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) => CustomPaint(
-    painter: WaveformPainter(bars: data.bars, style: style),
-    size: Size.infinite,
-  );
+        painter: WaveformPainter(bars: data.bars, style: style),
+        size: Size.infinite,
+      );
 }
 
 /// Custom painter for drawing the waveform visualization.

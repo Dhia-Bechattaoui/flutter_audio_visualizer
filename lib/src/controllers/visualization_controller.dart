@@ -300,11 +300,12 @@ class VisualizationData {
     final List<double>? spectrumBars,
     final DateTime? timestamp,
     final AudioVisualizerStyle? style,
-  }) => VisualizationData(
-    type: type ?? this.type,
-    bars: bars ?? this.bars,
-    spectrumBars: spectrumBars ?? this.spectrumBars,
-    timestamp: timestamp ?? this.timestamp,
-    style: style ?? this.style,
-  );
+  }) =>
+      VisualizationData(
+        type: type ?? this.type,
+        bars: bars ?? this.bars,
+        spectrumBars: spectrumBars ?? this.spectrumBars,
+        timestamp: timestamp ?? this.timestamp,
+        style: style ?? this.style,
+      );
 }
